@@ -191,49 +191,49 @@ def computer_move_smarter():
         tictac_list[player_2row - 1][player_2col - 1] = "O"
 
 # start
-print("Επιλέξτε δυσκολία")
-dif_level = input("Εύκολο (πάτησε 1), δύσκολο (πάτησε 2), αδύνατο (πάτησε 3):")
+print("choose difficulty")
+dif_level = input("easy (press 1), hard (press 2), impossible (press 3):")
 while dif_level != "1" and dif_level != "2" and dif_level != "3":
-    dif_level = input("Εύκολο (πάτησε 1), δύσκολο (πάτησε 2), αδύνατο (πάτησε 3)::")
+    dif_level = input("easy (press 1), hard (press 2), impossible (press 3):")
 dif_level = int(dif_level)
 board_print()
 while turns != 9:
-# παικτης 1
+# players move
     print("σειρά του παίκτη 1!")
-    player_1row = int(input("δωσε τον αριθμό της γραμμης: "))
-    player_1col = int(input("δωσε τον αριθμό της στήλης: "))
+    player_1row = int(input("give number of row:"))
+    player_1col = int(input("give number of col: "))
     while (player_1row not in row_l) or (player_1col not in row_l) or tictac_list[player_1row-1][player_1col-1] != " ":
-        print("δεν μπορεις να το βαλεις εκει. διαλεξε ξανα.")
-        player_1row = int(input("δωσε τον αριθμό της γραμμης: "))
-        player_1col = int(input("δωσε τον αριθμό της στήλης: "))
+        print("can not put it there choose again.")
+        player_1row = int(input("give number of row:"))
+        player_1col = int(input("give number of col: "))
     else:
         tictac_list[player_1row-1][player_1col-1] = "X"
     board_print()
-# ελεγχος νικης
+# check for victory
     for j in range(0, 3):
         if tictac_list[j][0] == "X" and tictac_list[j][1] == "X" and tictac_list[j][2] == "X":
-            print("κερδησε ο παικτης 1!")
+            print("you won!")
             turns = 11
             break
     for j in range(0, 3):
         if tictac_list[0][j] == "X" and tictac_list[1][j] == "X" and tictac_list[2][j] == "X":
-            print("κερδησε ο παικτης 1!")
+            print("you won!")
             turns = 11
             break
     if tictac_list[0][0] == "X" and tictac_list[1][1] == "X" and tictac_list[2][2] == "X":
-        print("κερδησε ο παικτης 1!")
+        print("you won!")
         turns = 11
         break
     if tictac_list[2][0] == "X" and tictac_list[1][1] == "X" and tictac_list[0][2] == "X":
-        print("κερδησε ο παικτης 1!")
+        print("you won!")
         turns = 11
         break
-# ελεγχος ισσοπαλιας
+# checj for drw
     turns += 1
     if turns >= 9:
         break
-# παικτης 2
-    print("σειρά του κομπιουτορ")
+# computer
+    print("computers turn")
     if dif_level == 1:
         computers_move_rad()
     elif dif_level == 2:
@@ -241,23 +241,23 @@ while turns != 9:
     else:
         computer_move_smarter()
     board_print()
-# ελεγχος νικης
+# check for victory
     for j in range(0, 3):
         if tictac_list[j][0] == "O" and tictac_list[j][1] == "O" and tictac_list[j][2] == "O":
-            print("κερδησε ο κομπιουτορ")
+            print("computer won")
             turns = 11
             break
     for j in range(0, 3):
         if tictac_list[0][j] == "O" and tictac_list[1][j] == "O" and tictac_list[2][j] == "O":
-            print("κερδησε ο κομπιουτορ")
+            print("computer won")
             turns = 11
             break
     if tictac_list[0][0] == "O" and tictac_list[1][1] == "O" and tictac_list[2][2] == "O":
-        print("κερδησε ο κομπιουτορ")
+        print("computer won")
         turns = 11
         break
     if tictac_list[2][0] == "O" and tictac_list[1][1] == "O" and tictac_list[0][2] == "O":
-        print("κερδησε ο κομπιουτορ")
+        print("computer won")
         turns = 11
         break
     turns += 1
@@ -266,4 +266,4 @@ while turns != 9:
 
 
 if turns == 9:
-    print("ισσοπαλια!")
+    print("draw!")
