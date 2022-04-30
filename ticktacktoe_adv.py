@@ -199,7 +199,7 @@ dif_level = int(dif_level)
 board_print()
 while turns != 9:
 # players move
-    print("σειρά του παίκτη 1!")
+    print("players move")
     player_1row = int(input("give number of row:"))
     player_1col = int(input("give number of col: "))
     while (player_1row not in row_l) or (player_1col not in row_l) or tictac_list[player_1row-1][player_1col-1] != " ":
